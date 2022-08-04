@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI calculator</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    <div class="calculator-container col shadow">
+        <h1>BMI CALCULATOR</h1>
+        <p class="display-6"><b>Height in meters</b></p>
+        <input class="height-input-field" type="text">
+        <p class="display-6"><b>Weight in kilograms</b></p>
+        <input class="weight-input-field" type="text"><br>
+        <button class="calculate"> <b>CALCULATE</b></button>
+    </div>
+    <h3 class="result"></h3>
+    <p class="result-statement"></p>
+    <script>
+        var heightInput = document.querySelector(".height-input-field");
+        var weightInput = document.querySelector(".weight-input-field");
+        var calculateButton = document.querySelector(".calculate");
+        var result = document.querySelector(".result");
+        var statement = document.querySelector(".result-statement");
+        var BMI, height, weight;
+
+        calculateButton.addEventListener("click", ()=>{
+
+            height = heightInput.value;
+             weight = weightInput.value;
+            BMI = weight/(height**2); 
+            result.innerText = BMI;
+
+    if(BMI < 18.5){
+        statement.innerText = "Your BMI falls within the underweight range";    
+    }else if((BMI > 18.5) && (BMI < 24.9)){
+        statement.innerText = "Your BMI falls within the normal or healthy weight range";
+    }else if((BMI > 25) && (BMI < 29.9 )){
+        statement.innerText = "Your BMI falls within the overweight range";
+    }else{
+        statement.innerText = "Your BMI falls within the obese range";
+    }
+    });
+    </script>
+</body>
+</html>
